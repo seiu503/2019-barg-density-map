@@ -15,8 +15,8 @@ var svg = d3.select("body").append("svg")
     .attr("class", "map");
 
 d3.queue()
-  .defer(d3.json, 'https://raw.githubusercontent.com/seiu503/careworks-density-map/master/oregon-counties.json')
-  .defer(d3.json, 'https://raw.githubusercontent.com/seiu503/careworks-density-map/master/cw.json')
+  .defer(d3.json, 'https://raw.githubusercontent.com/seiu503/2019-barg-density-map/master/oregon-counties.json')
+  .defer(d3.json, 'https://raw.githubusercontent.com/seiu503/2019-barg-density-map/master/2019barg.json')
   .await((error, or, contacts) => {
 
   if (error) console.log(error);
@@ -41,7 +41,7 @@ d3.queue()
     .attr("d", path);
 
   contactScale
-    .range([1, 2, 3]);
+    .range(["State Homecare", "State", "Higher Ed"]);
 
   colorScale
     .range(["#ff0000", "#ff8000", "#ffff00"]);
@@ -53,13 +53,13 @@ d3.queue()
     .data(contacts)
     .enter().append('circle')
       .attr('class', 'contact')
-      .attr('cx', d => projection([d[7], d[6]])[0])
-      .attr('cy', d => projection([d[7], d[6]])[1])
+      .attr('cx', d => projection([d[5], d[4]])[0])
+      .attr('cy', d => projection([d[5], d[4]])[1])
       .attr("r",  10)
       .attr("id", d => `id${d[0]}`)
-      .attr("class", (d) => `circle circle-${d[5]}`)
-      .attr('fill', d => colorScale(d[5]))
-      .style('opacity', d => opacityScale(d[5]));
+      .attr("class", (d) => `circle circle-${d[3]}`)
+      .attr('fill', d => colorScale(d[3]))
+      .style('opacity', d => opacityScale(d[3]));
 
 });
 
