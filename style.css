@@ -1,0 +1,110 @@
+/* style.css */
+
+body {
+	font-family: 'Titillium Web', sans-serif;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #4196f6;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  background: #4196f6;
+  width: 100%;
+}
+
+.header p{
+  font-size: 24px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 10px;
+  margin: 0;
+}
+
+.center {
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.outline {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.feature {
+  fill: #ccc;
+}
+
+.mesh {
+  fill: none;
+  stroke: #fff;
+  stroke-width: .5px;
+  stroke-linejoin: round;
+
+}
+
+svg {
+  margin-top: -20px;
+}
+
+path {
+  fill: #ccc;
+  stroke: #fff;
+  stroke-width: .5px;
+}
+
+.legend {
+  font-size: 12px;
+  width: 0;
+  padding: 0 40px;
+  position: relative;
+}
+
+.legend-3 {
+  padding: 0 0 0 40px;
+}
+
+.legend-1::before {
+  background: #ff0000;
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  border-radius: 100%;
+  left: 10px;
+}
+.legend-2::before {
+  background: #ff8000;
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  border-radius: 100%;
+  left: 10px;
+}
+.legend-3::before{
+  background: #ffff00;
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  border-radius: 100%;
+  left: 10px;
+}
+
+.legend__wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
