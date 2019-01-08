@@ -43,8 +43,10 @@ d3.queue()
   contactScale
     .range(["State Homecare", "State", "Higher Ed"]);
 
+  const circleClass = ["State Homecare", "State", "Higher Ed"];
+
   colorScale
-    .range(["#ff0000", "#ff8000", "#ffff00"]);
+    .range(["#531078", "#ff8000", "#ffff00"]);
   opacityScale
     .range([1, .6, .3]);
 
@@ -53,13 +55,19 @@ d3.queue()
     .data(contacts)
     .enter().append('circle')
       .attr('class', 'contact')
-      .attr('cx', d => projection([d[5], d[4]])[0])
-      .attr('cy', d => projection([d[5], d[4]])[1])
-      .attr("r",  10)
+      .attr('cx', d => {
+        // console.log(d[2]);
+        // console.log(d[1]);
+        // console.log(d);
+        // console.log(projection([d[2], d[1]]))
+        return projection([d[2], d[1]])[0]
+      })
+      .attr('cy', d => projection([d[2], d[1]])[1])
+      .attr("r",  3)
       .attr("id", d => `id${d[0]}`)
-      .attr("class", (d) => `circle circle-${d[3]}`)
-      .attr('fill', d => colorScale(d[3]))
-      .style('opacity', d => opacityScale(d[3]));
+      .attr("class", (d) => `circle circle-${circleClass.indexOf(d[0])}`)
+      .attr('fill', d => colorScale(d[0]))
+      .style('opacity', d => opacityScale(d[0]));
 
 });
 
@@ -68,7 +76,7 @@ const zoom = d3.zoom()
   .on('zoom', () => {
     d3.selectAll('g').attr("transform", d3.event.transform);
     d3.selectAll("circle")
-      .attr("r", (10 / d3.event.transform.k));
+      .attr("r", (3 / d3.event.transform.k));
   });
 
 d3.select("body").call(zoom);
